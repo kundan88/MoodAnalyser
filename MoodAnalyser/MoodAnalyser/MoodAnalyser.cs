@@ -1,14 +1,15 @@
-﻿using System;
+﻿using MoodAnalyser;
+using System;
 namespace MoodAnalyserSpace
 {
-    public class MoodAnalysers
+    public class MoodAnalyser
     {
         private string message;
-        public MoodAnalysers()
+        public MoodAnalyser()
         {
 
         }
-        public MoodAnalysers(string message)
+        public MoodAnalyser(string message)
         {
             this.message = message;
         }
@@ -17,12 +18,16 @@ namespace MoodAnalyserSpace
         {
             try
             {
-                if (message.ToLower().Contains("sad"))
+                if (message.Equals(string.Empty))
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EmptyMood, "Mood should not be Empty");
+                else if (message.ToLower().Contains("sad"))
                     return "SAD";
-                else return "HAPPY";
+                else
+                    return "HAPPY";
             }
             catch (NullReferenceException)
             {
+                //throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EmptyNull, "Mood should not be Null");
                 return "HAPPY";
             }
         }
