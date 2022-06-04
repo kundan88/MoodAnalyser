@@ -1,4 +1,4 @@
-﻿using MoodAnalyser;
+﻿using MoodAnalysers;
 using System;
 namespace MoodAnalyserSpace
 {
@@ -27,10 +27,11 @@ namespace MoodAnalyserSpace
             }
             catch (NullReferenceException)
             {
-                //throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EmptyNull, "Mood should not be Null");
+                //throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NullMood, "Mood should not be Null");
                 return "HAPPY";
             }
         }
+
     }
 }
 
