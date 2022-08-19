@@ -150,5 +150,48 @@ namespace MoodAnalyzerTest
                 Assert.AreEqual(expected, exception.Message);
             }
         }
+        /// <summary>
+        /// TC-5.1  Given MoodAnalyse Class Name Should Return MoodAnalyser Object
+        /// </summary>
+        [TestMethod]
+        public void MoodAnalyzerClassName_ShouldReturnMoodAnalyserObject_UsingParametrizedConstructor()
+        {
+            object expected = new MoodAnalyzer("HAPPY");
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyzerTest.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
+        }
+        /// <summary>
+        /// TC-5.2  Given MoodAnalyse Class Name When Improper Should Throw Exception
+        /// </summary>
+        [TestMethod]
+        public void MoodAnalyzerClassName_WhenImproper_UsingParametrizedConstructor_ShouldThrowExcpetion()
+        {
+            string expected = "Class not found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyzerTest.Mood", "MoodAnalyzer");
+            }
+            catch (Moodanalyzercustomexception exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
+        /// <summary>
+        /// TC-5.3  Given MoodAnalyse Class Name When Constructor is Improper Should Throw Exception
+        /// </summary>
+        [TestMethod]
+        public void MoodAnalyzerClassName_WhenConstructorIsImproper_UsingParametrizedConstructor_ShouldThrowExcpetion()
+        {
+            string expected = "Constructor not found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyzerTest.MoodAnalyzer", "Mood");
+            }
+            catch (Moodanalyzercustomexception exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
     }
 }
+

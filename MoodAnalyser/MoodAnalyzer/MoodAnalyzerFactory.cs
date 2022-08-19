@@ -41,6 +41,34 @@ namespace MoodAnalyzerTest
                 throw new Moodanalyzercustomexception(Moodanalyzercustomexception.Exceptiontype.NO_SUCH_CONSTRUCTOR, "Constructor not found");
             }
         }
+        /// <summary>
+        /// UC-5 For parameterised constructor by pssing messge parameter to the class method
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="constructorName"></param>
+        /// <returns></returns>
+        public static object CreateMoodAnalyseUsingParameterizedConstructor(string className, string constructorName)
+        {
+            Type type = typeof(MoodAnalyzer);
+            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+                if (type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo construct = type.GetConstructor(new[] { typeof(string) });
+                    object instance = construct.Invoke(new object[] { "HAPPY" });
+                    return instance;
+                }
+
+                else
+                {
+                    throw new Moodanalyzercustomexception(Moodanalyzercustomexception.Exceptiontype.NO_SUCH_CONSTRUCTOR, "Constructor not found");
+                }
+            }
+            else
+            {
+                throw new Moodanalyzercustomexception(Moodanalyzercustomexception.Exceptiontype.NO_SUCH_CLASS, "Class not found");
+            }
+        }
     }
 }
 
