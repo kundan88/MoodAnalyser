@@ -11,8 +11,11 @@ namespace MoodAnalyzerTest
         Exceptiontype type;
         public enum Exceptiontype
         {
-            EMPTY_NULL,
-            EMPTY_MOOD
+            NO_SUCH_CLASS,
+            NO_SUCH_CONSTRUCTOR,
+            EMPTY_MESSAGE,
+            NULL_MESSAGE,
+            NO_SUCH_FIELD,
         }
         public Moodanalyzercustomexception(Exceptiontype type, string message) : base(message)
         {
@@ -20,4 +23,3 @@ namespace MoodAnalyzerTest
         }
     }
 }
-
