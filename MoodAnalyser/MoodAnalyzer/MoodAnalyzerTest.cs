@@ -14,32 +14,18 @@ namespace MoodAnalyzerTest
         {
             this.message = message;
         }
-        public MoodAnalyzer()
-        {
-            this.message = "I am in any Mood";
-        }
         public string AnalyseMood()
         {
-            try
+            if (message.Contains("SAD"))
             {
-                if (message.Contains("SAD"))
-                {
-                    Console.WriteLine("The Mood is SAD");
-                    return "SAD";
-                }
-                else
-                {
-                    Console.WriteLine("The Mood is HAPPY");
-                    return "HAPPY";
-                }
+                Console.WriteLine("The Mood is SAD");
+                return "SAD";
             }
-            catch (NullReferenceException)
+            else
             {
-                //throw new Moodanalyzercustomexception(Moodanalyzercustomexception.Exceptiontype.EMPTY_NULL, "Mood should not be null");
+                Console.WriteLine("The Mood is HAPPY");
                 return "HAPPY";
             }
-
         }
     }
 }
-
